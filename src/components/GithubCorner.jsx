@@ -1,12 +1,12 @@
-import React from 'react'
 import "./githubcorner.css"
 
 function GithubCorner() {
   return (
     <a
-    href="https://github.com/Karthik-S-Salian/kannada-quiz-site"
+    target="_blank"
+    href="https://github.com/varunpai314"
     className="github-corner"
-    aria-label="View source on GitHub"
+    aria-label="View source on GitHub" rel="noreferrer"
   >
     <svg
       width="80"

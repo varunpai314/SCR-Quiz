@@ -1,21 +1,31 @@
 import Question from "./Question"
 import "./mcq.css"
-import { questionSets ,getData} from './../constants'
+import { getData } from './../constants'
+import { useState } from 'react';
 
-function McqPage({ questionSet, attemptType }) {
-    console.log(questionSet,attemptType)
-    const data = getData(questionSet);
+function McqPage() {
+    
+    const [showAnswers, setShowAnswers] = useState(false);
+    const data = getData();
+
+    const toggleAnswers = () => {
+        setShowAnswers(!showAnswers);
+    };
     return (
         <>
-            <ul className="question-list-container kannada-font">
+        <button onClick={toggleAnswers}>
+                {showAnswers ? 'Hide Answers' : 'Show Answers'}
+            </button>
+            <ul className="question-list-container">
                 {data.map((mcq, index) => {
                     return (
                         <Question
                             key={index}
-                            attemptType={attemptType}
                             index={index + 1}
                             question={mcq["question"]}
+                            answer={mcq["answer"]}
                             options={mcq["options"]}
+                            showAnswers={showAnswers}
                         />
                     )
                 })}
@@ -24,4 +34,4 @@ function McqPage({ questionSet, attemptType }) {
     )
 }
 
-export default McqPage
+export default McqPage;
